@@ -1,0 +1,60 @@
+# -------------------------
+# Operating System
+# -------------------------
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# -------------------------
+# IDE / Editors
+# -------------------------
+.vscode/
+.idea/
+*.swp
+*.swo
+*.tmp
+
+# -------------------------
+# Environment / Secrets
+# -------------------------
+.env
+.env.*
+!.env.example
+!.env.local.example
+
+# -------------------------
+# Logs
+# -------------------------
+*.log
+logs/
+*.log.*
+
+# -------------------------
+# Temporary Files
+# -------------------------
+tmp/
+temp/
+.cache/
+
+# -------------------------
+# Generated Analysis Data
+# -------------------------
+# Local analysis results should not be committed
+data/analyses/
+
+# Local repository clones/cache
+data/repos_cache/
+
+# -------------------------
+# Generated ML Data
+# -------------------------
+ml/data/
+*.pkl
+*.joblib
+*.pickle
+
+# -------------------------
+# OS / Tool Artifacts
+# -------------------------
+.DS_Store
+Thumbs.db

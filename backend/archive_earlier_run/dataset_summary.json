@@ -1,0 +1,177 @@
+{
+  "generated_at": "2026-10-21T15:30:26+00:00",
+  "feature_schema_version": "1.0",
+  "label_definition": "1 if a likely bug-fix commit (commit-message heuristic) touches the file in the 180 days after the snapshot date; features use only history at or before the snapshot date",
+  "total_rows": 2088,
+  "positive_rows": 194,
+  "repositories": {
+    "psf/requests": {
+      "head": "611c6162cb",
+      "commits": 4883,
+      "snapshots": [
+        {
+          "date": "2026-03-25",
+          "files": 36,
+          "risky": 6
+        },
+        {
+          "date": "2025-09-26",
+          "files": 36,
+          "risky": 16
+        },
+        {
+          "date": "2025-03-30",
+          "files": 36,
+          "risky": 2
+        }
+      ]
+    },
+    "pallets/flask": {
+      "head": "d086db856b",
+      "commits": 3829,
+      "snapshots": [
+        {
+          "date": "2026-04-10",
+          "files": 83,
+          "risky": 5
+        },
+        {
+          "date": "2025-10-12",
+          "files": 83,
+          "risky": 11
+        },
+        {
+          "date": "2025-04-15",
+          "files": 83,
+          "risky": 2
+        }
+      ]
+    },
+    "pallets/click": {
+      "head": "2247b35ea1",
+      "commits": 2172,
+      "snapshots": [
+        {
+          "date": "2026-03-27",
+          "files": 63,
+          "risky": 24
+        },
+        {
+          "date": "2025-09-28",
+          "files": 62,
+          "risky": 5
+        },
+        {
+          "date": "2025-04-01",
+          "files": 61,
+          "risky": 16
+        }
+      ]
+    },
+    "pallets/jinja": {
+      "head": "5ef70112a1",
+      "commits": 2175,
+      "snapshots": [
+        {
+          "date": "2024-12-16",
+          "files": 60,
+          "risky": 26
+        },
+        {
+          "date": "2024-06-19",
+          "files": 60,
+          "risky": 10
+        },
+        {
+          "date": "2023-12-22",
+          "files": 60,
+          "risky": 7
+        }
+      ]
+    },
+    "encode/httpx": {
+      "head": "b5addb64f0",
+      "commits": 1482,
+      "snapshots": [
+        {
+          "date": "2025-08-27",
+          "files": 60,
+          "risky": 0
+        },
+        {
+          "date": "2025-02-28",
+          "files": 60,
+          "risky": 1
+        },
+        {
+          "date": "2024-09-01",
+          "files": 61,
+          "risky": 5
+        }
+      ]
+    },
+    "Textualize/rich": {
+      "head": "9d8f9a372c",
+      "commits": 3387,
+      "snapshots": [
+        {
+          "date": "2025-12-25",
+          "files": 190,
+          "risky": 10
+        },
+        {
+          "date": "2025-06-28",
+          "files": 190,
+          "risky": 6
+        },
+        {
+          "date": "2024-12-30",
+          "files": 190,
+          "risky": 10
+        }
+      ]
+    },
+    "pallets/werkzeug": {
+      "head": "665e760ca6",
+      "commits": 4531,
+      "snapshots": [
+        {
+          "date": "2026-04-20",
+          "files": 138,
+          "risky": 22
+        },
+        {
+          "date": "2025-10-22",
+          "files": 138,
+          "risky": 4
+        },
+        {
+          "date": "2025-04-25",
+          "files": 138,
+          "risky": 1
+        }
+      ]
+    },
+    "encode/starlette": {
+      "head": "1a3a401c0d",
+      "commits": 1706,
+      "snapshots": [
+        {
+          "date": "2026-04-24",
+          "files": 67,
+          "risky": 5
+        },
+        {
+          "date": "2025-10-26",
+          "files": 67,
+          "risky": 0
+        },
+        {
+          "date": "2025-04-29",
+          "files": 66,
+          "risky": 0
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+:root {
+  --background: #090d16;
+  --foreground: #f1f5f9;
+  --card-bg: #0f172a;
+  --card-border: #1e293b;
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* Developer tooling custom scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #090d16;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
+
+/* Code and mono styling */
+code, pre, .font-mono {
+  font-family: var(--font-mono);
+}
+
+/* Glassmorphism subtle surface */
+.surface-card {
+  background-color: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(51, 65, 85, 0.6);
+}
+
+.surface-card-hover {
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.surface-card-hover:hover {
+  border-color: rgba(99, 102, 241, 0.4);
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.6), 0 0 15px -3px rgba(99, 102, 241, 0.15);
+}
+
+/* Subtle grid background for developer feel */
+.bg-grid-pattern {
+  background-image: radial-gradient(rgba(51, 65, 85, 0.35) 1px, transparent 1px);
+  background-size: 24px 24px;
+}

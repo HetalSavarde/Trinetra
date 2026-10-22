@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0",
+  "feature_order": [
+    "commit_count",
+    "author_count",
+    "lines_added",
+    "lines_deleted",
+    "total_churn",
+    "loc",
+    "complexity",
+    "file_age_days",
+    "days_since_last_change",
+    "recent_commit_count",
+    "bug_fix_count"
+  ],
+  "preprocessing": "log1p -> StandardScaler (inside the saved sklearn Pipeline)",
+  "label": "1 if a likely bug-fix commit touches the file in the 180 days after the snapshot",
+  "model": "LogisticRegression(class_weight=balanced)"
+}

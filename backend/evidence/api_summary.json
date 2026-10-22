@@ -1,0 +1,24 @@
+{
+    "repository": {
+        "name": "pallets/itsdangerous",
+        "url": "https://github.com/pallets/itsdangerous",
+        "analyzedCommit": "672971d66a2ef9f85151e53283113f33d642dabd"
+    },
+    "analyzedAt": "2026-10-22T06:09:36+00:00",
+    "model": {
+        "feature_schema_version": "1.0",
+        "trained_at": "2026-10-22T06:09:19+00:00",
+        "model": "LogisticRegression(class_weight=balanced)"
+    },
+    "summary": {
+        "totalFiles": 15,
+        "averageRiskScore": 27.0,
+        "categoryCounts": {
+            "Critical": 0,
+            "High": 0,
+            "Medium": 5,
+            "Low": 10
+        }
+    },
+    "notice": "Scores estimate relative maintenance/defect RISK from history and code metrics. They do not prove a file contains a bug."
+}

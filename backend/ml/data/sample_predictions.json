@@ -1,0 +1,597 @@
+{
+  "jobId": "job_1108dcb1ca",
+  "repository": {
+    "name": "pallets/itsdangerous",
+    "url": "https://github.com/pallets/itsdangerous",
+    "analyzedCommit": "672971d66a2ef9f85151e53283113f33d642dabd"
+  },
+  "analyzedAt": "2026-10-22T06:09:36+00:00",
+  "model": {
+    "feature_schema_version": "1.0",
+    "trained_at": "2026-10-22T06:09:19+00:00",
+    "model": "LogisticRegression(class_weight=balanced)"
+  },
+  "summary": {
+    "totalFiles": 15,
+    "averageRiskScore": 27.0,
+    "categoryCounts": {
+      "Critical": 0,
+      "High": 0,
+      "Medium": 5,
+      "Low": 10
+    }
+  },
+  "files": [
+    {
+      "filePath": "src/itsdangerous/serializer.py",
+      "riskScore": 63.0,
+      "riskCategory": "Medium",
+      "metrics": {
+        "commit_count": 26,
+        "author_count": 4,
+        "lines_added": 649,
+        "lines_deleted": 245,
+        "total_churn": 894,
+        "loc": 224,
+        "complexity": 44,
+        "file_age_days": 2442,
+        "days_since_last_change": 16,
+        "recent_commit_count": 1,
+        "bug_fix_count": 1
+      },
+      "topFactors": [
+        {
+          "feature": "lines_added",
+          "value": 649,
+          "contribution": 1.363,
+          "text": "total lines added = 649 raises predicted risk"
+        },
+        {
+          "feature": "days_since_last_change",
+          "value": 16,
+          "contribution": 0.635,
+          "text": "time since last change = 16 raises predicted risk"
+        },
+        {
+          "feature": "complexity",
+          "value": 44,
+          "contribution": 0.11,
+          "text": "cyclomatic complexity = 44 raises predicted risk"
+        }
+      ]
+    },
+    {
+      "filePath": "src/itsdangerous/__init__.py",
+      "riskScore": 57.4,
+      "riskCategory": "Medium",
+      "metrics": {
+        "commit_count": 28,
+        "author_count": 1,
+        "lines_added": 1156,
+        "lines_deleted": 1139,
+        "total_churn": 2295,
+        "loc": 17,
+        "complexity": 1,
+        "file_age_days": 2451,
+        "days_since_last_change": 16,
+        "recent_commit_count": 1,
+        "bug_fix_count": 0
+      },
+      "topFactors": [
+        {
+          "feature": "lines_added",
+          "value": 1156,
+          "contribution": 1.928,
+          "text": "total lines added = 1156 raises predicted risk"
+        },
+        {
+          "feature": "days_since_last_change",
+          "value": 16,
+          "contribution": 0.635,
+          "text": "time since last change = 16 raises predicted risk"
+        },
+        {
+          "feature": "commit_count",
+          "value": 28,
+          "contribution": 0.12,
+          "text": "number of commits = 28 raises predicted risk"
+        }
+      ]
+    },
+    {
+      "filePath": "src/itsdangerous/timed.py",
+      "riskScore": 52.0,
+      "riskCategory": "Medium",
+      "metrics": {
+        "commit_count": 24,
+        "author_count": 6,
+        "lines_added": 349,
+        "lines_deleted": 123,
+        "total_churn": 472,
+        "loc": 136,
+        "complexity": 28,
+        "file_age_days": 2442,
+        "days_since_last_change": 16,
+        "recent_commit_count": 1,
+        "bug_fix_count": 1
+      },
+      "topFactors": [
+        {
+          "feature": "lines_added",
+          "value": 349,
+          "contribution": 0.756,
+          "text": "total lines added = 349 raises predicted risk"
+        },
+        {
+          "feature": "days_since_last_change",
+          "value": 16,
+          "contribution": 0.635,
+          "text": "time since last change = 16 raises predicted risk"
+        },
+        {
+          "feature": "commit_count",
+          "value": 24,
+          "contribution": 0.097,
+          "text": "number of commits = 24 raises predicted risk"
+        }
+      ]
+    },
+    {
+      "filePath": "tests/test_itsdangerous/test_serializer.py",
+      "riskScore": 45.1,
+      "riskCategory": "Medium",
+      "metrics": {
+        "commit_count": 14,
+        "author_count": 2,
+        "lines_added": 271,
+        "lines_deleted": 77,
+        "total_churn": 348,
+        "loc": 150,
+        "complexity": 45,
+        "file_age_days": 2431,
+        "days_since_last_change": 16,
+        "recent_commit_count": 1,
+        "bug_fix_count": 0
+      },
+      "topFactors": [
+        {
+          "feature": "days_since_last_change",
+          "value": 16,
+          "contribution": 0.635,
+          "text": "time since last change = 16 raises predicted risk"
+        },
+        {
+          "feature": "lines_added",
+          "value": 271,
+          "contribution": 0.509,
+          "text": "total lines added = 271 raises predicted risk"
+        },
+        {
+          "feature": "complexity",
+          "value": 45,
+          "contribution": 0.112,
+          "text": "cyclomatic complexity = 45 raises predicted risk"
+        }
+      ]
+    },
+    {
+      "filePath": "docs/conf.py",
+      "riskScore": 41.8,
+      "riskCategory": "Medium",
+      "metrics": {
+        "commit_count": 19,
+        "author_count": 3,
+        "lines_added": 321,
+        "lines_deleted": 266,
+        "total_churn": 587,
+        "loc": 46,
+        "complexity": 1,
+        "file_age_days": 5104,
+        "days_since_last_change": 1,
+        "recent_commit_count": 2,
+        "bug_fix_count": 1
+      },
+      "topFactors": [
+        {
+          "feature": "days_since_last_change",
+          "value": 1,
+          "contribution": 1.098,
+          "text": "time since last change = 1 raises predicted risk"
+        },
+        {
+          "feature": "lines_added",
+          "value": 321,
+          "contribution": 0.675,
+          "text": "total lines added = 321 raises predicted risk"
+        },
+        {
+          "feature": "commit_count",
+          "value": 19,
+          "contribution": 0.064,
+          "text": "number of commits = 19 raises predicted risk"
+        }
+      ]
+    },
+    {
+      "filePath": "src/itsdangerous/signer.py",
+      "riskScore": 33.6,
+      "riskCategory": "Low",
+      "metrics": {
+        "commit_count": 13,
+        "author_count": 3,
+        "lines_added": 392,
+        "lines_deleted": 126,
+        "total_churn": 518,
+        "loc": 124,
+        "complexity": 34,
+        "file_age_days": 2442,
+        "days_since_last_change": 424,
+        "recent_commit_count": 0,
+        "bug_fix_count": 0
+      },
+      "topFactors": [
+        {
+          "feature": "lines_added",
+          "value": 392,
+          "contribution": 0.87,
+          "text": "total lines added = 392 raises predicted risk"
+        },
+        {
+          "feature": "complexity",
+          "value": 34,
+          "contribution": 0.085,
+          "text": "cyclomatic complexity = 34 raises predicted risk"
+        },
+        {
+          "feature": "author_count",
+          "value": 3,
+          "contribution": 0.032,
+          "text": "number of distinct authors = 3 raises predicted risk"
+        }
+      ]
+    },
+    {
+      "filePath": "src/itsdangerous/exc.py",
+      "riskScore": 19.9,
+      "riskCategory": "Low",
+      "metrics": {
+        "commit_count": 8,
+        "author_count": 1,
+        "lines_added": 151,
+        "lines_deleted": 45,
+        "total_churn": 196,
+        "loc": 38,
+        "complexity": 6,
+        "file_age_days": 2442,
+        "days_since_last_change": 427,
+        "recent_commit_count": 0,
+        "bug_fix_count": 0
+      },
+      "topFactors": [
+        {
+          "feature": "author_count",
+          "value": 1,
+          "contribution": 0.106,
+          "text": "number of distinct authors = 1 raises predicted risk"
+        },
+        {
+          "feature": "recent_commit_count",
+          "value": 0,
+          "contribution": 0.02,
+          "text": "recent commit activity = 0 raises predicted risk"
+        },
+        {
+          "feature": "total_churn",
+          "value": 196,
+          "contribution": 0.018,
+          "text": "total churn (added + deleted) = 196 raises predicted risk"
+        }
+      ]
+    },
+    {
+      "filePath": "tests/test_itsdangerous/test_signer.py",
+      "riskScore": 18.7,
+      "riskCategory": "Low",
+      "metrics": {
+        "commit_count": 4,
+        "author_count": 2,
+        "lines_added": 111,
+        "lines_deleted": 2,
+        "total_churn": 113,
+        "loc": 81,
+        "complexity": 30,
+        "file_age_days": 2431,
+        "days_since_last_change": 1751,
+        "recent_commit_count": 0,
+        "bug_fix_count": 0
+      },
+      "topFactors": [
+        {
+          "feature": "lines_deleted",
+          "value": 2,
+          "contribution": 0.406,
+          "text": "total lines deleted = 2 raises predicted risk"
+        },
+        {
+          "feature": "total_churn",
+          "value": 113,
+          "contribution": 0.131,
+          "text": "total churn (added + deleted) = 113 raises predicted risk"
+        },
+        {
+          "feature": "complexity",
+          "value": 30,
+          "contribution": 0.073,
+          "text": "cyclomatic complexity = 30 raises predicted risk"
+        }
+      ]
+    },
+    {
+      "filePath": "tests/test_itsdangerous/test_timed.py",
+      "riskScore": 18.5,
+      "riskCategory": "Low",
+      "metrics": {
+        "commit_count": 12,
+        "author_count": 4,
+        "lines_added": 139,
+        "lines_deleted": 24,
+        "total_churn": 163,
+        "loc": 83,
+        "complexity": 28,
+        "file_age_days": 2431,
+        "days_since_last_change": 1193,
+        "recent_commit_count": 0,
+        "bug_fix_count": 0
+      },
+      "topFactors": [
+        {
+          "feature": "lines_deleted",
+          "value": 24,
+          "contribution": 0.089,
+          "text": "total lines deleted = 24 raises predicted risk"
+        },
+        {
+          "feature": "complexity",
+          "value": 28,
+          "contribution": 0.066,
+          "text": "cyclomatic complexity = 28 raises predicted risk"
+        },
+        {
+          "feature": "total_churn",
+          "value": 163,
+          "contribution": 0.056,
+          "text": "total churn (added + deleted) = 163 raises predicted risk"
+        }
+      ]
+    },
+    {
+      "filePath": "src/itsdangerous/url_safe.py",
+      "riskScore": 17.7,
+      "riskCategory": "Low",
+      "metrics": {
+        "commit_count": 8,
+        "author_count": 1,
+        "lines_added": 103,
+        "lines_deleted": 20,
+        "total_churn": 123,
+        "loc": 52,
+        "complexity": 8,
+        "file_age_days": 2442,
+        "days_since_last_change": 427,
+        "recent_commit_count": 0,
+        "bug_fix_count": 0
+      },
+      "topFactors": [
+        {
+          "feature": "lines_deleted",
+          "value": 20,
+          "contribution": 0.115,
+          "text": "total lines deleted = 20 raises predicted risk"
+        },
+        {
+          "feature": "total_churn",
+          "value": 123,
+          "contribution": 0.114,
+          "text": "total churn (added + deleted) = 123 raises predicted risk"
+        },
+        {
+          "feature": "author_count",
+          "value": 1,
+          "contribution": 0.106,
+          "text": "number of distinct authors = 1 raises predicted risk"
+        }
+      ]
+    },
+    {
+      "filePath": "src/itsdangerous/encoding.py",
+      "riskScore": 13.7,
+      "riskCategory": "Low",
+      "metrics": {
+        "commit_count": 6,
+        "author_count": 1,
+        "lines_added": 72,
+        "lines_deleted": 18,
+        "total_churn": 90,
+        "loc": 30,
+        "complexity": 7,
+        "file_age_days": 2442,
+        "days_since_last_change": 427,
+        "recent_commit_count": 0,
+        "bug_fix_count": 0
+      },
+      "topFactors": [
+        {
+          "feature": "total_churn",
+          "value": 90,
+          "contribution": 0.178,
+          "text": "total churn (added + deleted) = 90 raises predicted risk"
+        },
+        {
+          "feature": "lines_deleted",
+          "value": 18,
+          "contribution": 0.13,
+          "text": "total lines deleted = 18 raises predicted risk"
+        },
+        {
+          "feature": "author_count",
+          "value": 1,
+          "contribution": 0.106,
+          "text": "number of distinct authors = 1 raises predicted risk"
+        }
+      ]
+    },
+    {
+      "filePath": "src/itsdangerous/_json.py",
+      "riskScore": 9.7,
+      "riskCategory": "Low",
+      "metrics": {
+        "commit_count": 10,
+        "author_count": 2,
+        "lines_added": 59,
+        "lines_deleted": 41,
+        "total_churn": 100,
+        "loc": 12,
+        "complexity": 2,
+        "file_age_days": 2442,
+        "days_since_last_change": 426,
+        "recent_commit_count": 0,
+        "bug_fix_count": 0
+      },
+      "topFactors": [
+        {
+          "feature": "total_churn",
+          "value": 100,
+          "contribution": 0.156,
+          "text": "total churn (added + deleted) = 100 raises predicted risk"
+        },
+        {
+          "feature": "author_count",
+          "value": 2,
+          "contribution": 0.063,
+          "text": "number of distinct authors = 2 raises predicted risk"
+        },
+        {
+          "feature": "loc",
+          "value": 12,
+          "contribution": 0.03,
+          "text": "file size (LOC) = 12 raises predicted risk"
+        }
+      ]
+    },
+    {
+      "filePath": "tests/test_itsdangerous/test_encoding.py",
+      "riskScore": 8.0,
+      "riskCategory": "Low",
+      "metrics": {
+        "commit_count": 2,
+        "author_count": 1,
+        "lines_added": 40,
+        "lines_deleted": 3,
+        "total_churn": 43,
+        "loc": 28,
+        "complexity": 9,
+        "file_age_days": 2431,
+        "days_since_last_change": 1886,
+        "recent_commit_count": 0,
+        "bug_fix_count": 0
+      },
+      "topFactors": [
+        {
+          "feature": "lines_deleted",
+          "value": 3,
+          "contribution": 0.363,
+          "text": "total lines deleted = 3 raises predicted risk"
+        },
+        {
+          "feature": "total_churn",
+          "value": 43,
+          "contribution": 0.328,
+          "text": "total churn (added + deleted) = 43 raises predicted risk"
+        },
+        {
+          "feature": "author_count",
+          "value": 1,
+          "contribution": 0.106,
+          "text": "number of distinct authors = 1 raises predicted risk"
+        }
+      ]
+    },
+    {
+      "filePath": "tests/test_itsdangerous/test_url_safe.py",
+      "riskScore": 5.8,
+      "riskCategory": "Low",
+      "metrics": {
+        "commit_count": 3,
+        "author_count": 1,
+        "lines_added": 28,
+        "lines_deleted": 4,
+        "total_churn": 32,
+        "loc": 17,
+        "complexity": 3,
+        "file_age_days": 2431,
+        "days_since_last_change": 1751,
+        "recent_commit_count": 0,
+        "bug_fix_count": 0
+      },
+      "topFactors": [
+        {
+          "feature": "total_churn",
+          "value": 32,
+          "contribution": 0.388,
+          "text": "total churn (added + deleted) = 32 raises predicted risk"
+        },
+        {
+          "feature": "lines_deleted",
+          "value": 4,
+          "contribution": 0.329,
+          "text": "total lines deleted = 4 raises predicted risk"
+        },
+        {
+          "feature": "author_count",
+          "value": 1,
+          "contribution": 0.106,
+          "text": "number of distinct authors = 1 raises predicted risk"
+        }
+      ]
+    },
+    {
+      "filePath": "tests/test_itsdangerous/__init__.py",
+      "riskScore": 0.5,
+      "riskCategory": "Low",
+      "metrics": {
+        "commit_count": 1,
+        "author_count": 1,
+        "lines_added": 0,
+        "lines_deleted": 0,
+        "total_churn": 0,
+        "loc": 0,
+        "complexity": 1,
+        "file_age_days": 2431,
+        "days_since_last_change": 2431,
+        "recent_commit_count": 0,
+        "bug_fix_count": 0
+      },
+      "topFactors": [
+        {
+          "feature": "total_churn",
+          "value": 0,
+          "contribution": 1.11,
+          "text": "total churn (added + deleted) = 0 raises predicted risk"
+        },
+        {
+          "feature": "lines_deleted",
+          "value": 0,
+          "contribution": 0.57,
+          "text": "total lines deleted = 0 raises predicted risk"
+        },
+        {
+          "feature": "author_count",
+          "value": 1,
+          "contribution": 0.106,
+          "text": "number of distinct authors = 1 raises predicted risk"
+        }
+      ]
+    }
+  ],
+  "notice": "Scores estimate relative maintenance/defect RISK from history and code metrics. They do not prove a file contains a bug."
+}

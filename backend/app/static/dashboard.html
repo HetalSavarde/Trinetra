@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TRINETRA Dashboard</title>
+<style>
+  :root { --bg:#f6f8fb; --card:#fff; --ink:#14263d; --muted:#5b6b80; --line:#dde4ee; --accent:#1b4d7a;
+          --crit:#b42318; --high:#e8590c; --med:#d9a400; --low:#2f9e44; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#0f1824; --card:#172335; --ink:#e6edf6; --muted:#9db0c6; --line:#2a3a52; --accent:#6fb1e8; }
+  }
+  * { box-sizing:border-box; }
+  body { margin:0; font:15px/1.5 system-ui,sans-serif; background:var(--bg); color:var(--ink); }
+  main { max-width:1100px; margin:0 auto; padding:20px 16px 48px; }
+  h1 { margin:0 0 2px; font-size:24px; color:var(--accent); }
+  .sub { color:var(--muted); margin-bottom:18px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:16px; margin-bottom:16px; }
+  form { display:flex; gap:8px; flex-wrap:wrap; }
+  input { flex:1; min-width:240px; padding:9px 11px; border:1px solid var(--line); border-radius:8px;
+          background:var(--bg); color:var(--ink); font:inherit; }
+  button { padding:9px 16px; border:0; border-radius:8px; background:var(--accent); color:#fff; font:inherit; cursor:pointer; }
+  button:disabled { opacity:.5; cursor:wait; }
+  .stats { display:grid; grid-template-columns:repeat(auto-fit,minmax(130px,1fr)); gap:10px; }
+  .stat b { display:block; font-size:22px; }
+  .stat span { color:var(--muted); font-size:13px; }
+  .bar { display:flex; align-items:center; gap:8px; margin:6px 0; font-size:14px; }
+  .bar .lbl { width:70px; } .bar .track { flex:1; background:var(--line); border-radius:5px; height:14px; overflow:hidden; }
+  .bar .fill { height:100%; } .bar .n { width:40px; text-align:right; color:var(--muted); }
+  table { width:100%; border-collapse:collapse; font-size:14px; }
+  th, td { text-align:left; padding:7px 8px; border-bottom:1px solid var(--line); }
+  th { color:var(--muted); font-weight:600; }
+  tbody tr { cursor:pointer; } tbody tr:hover { background:var(--bg); }
+  .pill { padding:2px 8px; border-radius:99px; font-size:12px; color:#fff; }
+  .Critical{background:var(--crit)} .High{background:var(--high)} .Medium{background:var(--med)} .Low{background:var(--low)}
+  .note { font-size:13px; color:var(--muted); }
+  .err { color:var(--crit); } .hidden { display:none; }
+  .tablewrap { overflow-x:auto; }
+  code { word-break:break-all; }
+</style>
+</head>
+<body>
+<main>
+  <h1>TRINETRA</h1>
+  <div class="sub">File-level maintenance / defect-risk estimates from Git history and code metrics.</div>
+
+  <div class="card">
+    <form id="f">
+      <input id="url" placeholder="https://github.com/owner/repository" value="https://github.com/pallets/click" required>
+      <button id="go">Analyze</button>
+    </form>
+    <div id="status" class="note" style="margin-top:8px"></div>
+  </div>
+
+  <div id="out" class="hidden">
+    <div class="card">
+      <div><b id="repo"></b> &middot; <span class="note" id="meta"></span></div>
+      <div class="stats" id="stats" style="margin-top:12px"></div>
+    </div>
+    <div class="card"><b>Risk distribution</b><div id="dist" style="margin-top:8px"></div></div>
+    <div class="card">
+      <b>File risk table</b> <span class="note">(click a row for details)</span>
+      <div class="tablewrap"><table><thead><tr><th>File</th><th>Risk</th><th>Category</th><th>LOC</th><th>Complexity</th><th>Commits</th></tr></thead>
+      <tbody id="rows"></tbody></table></div>
+    </div>
+    <div class="card hidden" id="detail"></div>
+    <div class="note" id="notice"></div>
+  </div>
+</main>
+<script>
+const $ = id => document.getElementById(id);
+const COLORS = {Critical:'var(--crit)', High:'var(--high)', Medium:'var(--med)', Low:'var(--low)'};
+let jobId = null;
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+async function api(path, opts) {
+  const r = await fetch(path, opts);
+  const j = await r.json().catch(() => ({}));
+  if (!r.ok) throw new Error(j.detail || ('Request failed: ' + r.status));
+  return j;
+}
+$('f').addEventListener('submit', async e => {
+  e.preventDefault();
+  $('go').disabled = true; $('out').classList.add('hidden'); $('status').className = 'note';
+  try {
+    const job = await api('/api/v1/analyze', {method:'POST', headers:{'Content-Type':'application/json'},
+                                              body: JSON.stringify({repoUrl: $('url').value})});
+    jobId = job.jobId;
+    let s;
+    do {
+      await new Promise(r => setTimeout(r, 1500));
+      s = await api('/api/v1/jobs/' + jobId);
+      $('status').textContent = `${s.stage} (${s.progress}%)`;
+    } while (s.status === 'queued' || s.status === 'running');
+    if (s.status === 'failed') throw new Error(s.error);
+    await render();
+    $('status').textContent = 'Analysis complete.';
+  } catch (err) { $('status').className = 'note err'; $('status').textContent = err.message; }
+  $('go').disabled = false;
+});
+async function render() {
+  const [sum, files] = await Promise.all([
+    api('/api/v1/repositories/summary?jobId=' + jobId),
+    api('/api/v1/repositories/files?jobId=' + jobId + '&limit=100')]);
+  const s = sum.summary;
+  $('repo').innerHTML = `<a href="${esc(sum.repository.url)}" target="_blank" rel="noopener">${esc(sum.repository.name)}</a>`;
+  $('meta').textContent = `commit ${sum.repository.analyzedCommit.slice(0,8)} · analyzed ${sum.analyzedAt}`;
+  $('stats').innerHTML = [['Files analyzed', s.totalFiles], ['Avg risk score', s.averageRiskScore],
+    ...Object.entries(s.categoryCounts).map(([k,v]) => [k, v])]
+    .map(([k,v]) => `<div class="stat"><b>${esc(v)}</b><span>${esc(k)}</span></div>`).join('');
+  const max = Math.max(1, ...Object.values(s.categoryCounts));
+  $('dist').innerHTML = Object.entries(s.categoryCounts).map(([k,v]) =>
+    `<div class="bar"><span class="lbl">${k}</span><div class="track"><div class="fill" style="width:${v/max*100}%;background:${COLORS[k]}"></div></div><span class="n">${v}</span></div>`).join('');
+  $('rows').innerHTML = files.files.map(f =>
+    `<tr data-path="${esc(f.filePath)}"><td><code>${esc(f.filePath)}</code></td><td>${f.riskScore}</td>
+     <td><span class="pill ${f.riskCategory}">${f.riskCategory}</span></td><td>${f.metrics.loc}</td>
+     <td>${f.metrics.complexity}</td><td>${f.metrics.commit_count}</td></tr>`).join('');
+  $('rows').querySelectorAll('tr').forEach(tr => tr.onclick = () => showDetail(tr.dataset.path));
+  $('notice').textContent = sum.notice + ` Showing top ${files.files.length} of ${s.totalFiles} files.`;
+  $('detail').classList.add('hidden'); $('out').classList.remove('hidden');
+}
+async function showDetail(path) {
+  const d = await api('/api/v1/files/detail?jobId=' + jobId + '&path=' + encodeURIComponent(path));
+  const m = d.metrics;
+  $('detail').innerHTML = `<b>${esc(d.filePath)}</b> <span class="pill ${d.riskCategory}">${d.riskCategory} · ${d.riskScore}</span>
+    <p><b>Why this score</b> (from the model's feature contributions):</p>
+    <ul>${d.topFactors.length ? d.topFactors.map(f => `<li>${esc(f.text)}</li>`).join('') : '<li>No feature raises the predicted risk above the baseline.</li>'}</ul>
+    <p class="note">Underlying metrics — commits: ${m.commit_count}, authors: ${m.author_count}, added: ${m.lines_added},
+    deleted: ${m.lines_deleted}, LOC: ${m.loc}, complexity: ${m.complexity}, age: ${m.file_age_days}d,
+    since last change: ${m.days_since_last_change}d, recent commits: ${m.recent_commit_count}, past bug-fix commits (heuristic): ${m.bug_fix_count}</p>`;
+  $('detail').classList.remove('hidden'); $('detail').scrollIntoView({behavior:'smooth', block:'nearest'});
+}
+</script>
+</body>
+</html>
